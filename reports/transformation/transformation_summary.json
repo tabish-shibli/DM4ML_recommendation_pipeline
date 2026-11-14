@@ -1,0 +1,54 @@
+{
+  "stage": "transformation",
+  "test_split": {
+    "cutoff": "2000-12-02T14:59:38+00:00",
+    "train_rows": 799412,
+    "test_rows": 199847,
+    "train_period": [
+      "2000-04-25T23:05:32+00:00",
+      "2000-12-02T14:59:38+00:00"
+    ],
+    "test_period": [
+      "2000-12-02T14:59:53+00:00",
+      "2003-02-28T17:49:50+00:00"
+    ],
+    "train_users": 5400,
+    "test_users": 1822,
+    "warm_test_users": 1182,
+    "cold_start_test_users": 640,
+    "test_rows_from_warm_users": 104440,
+    "test_rows_on_unseen_items": 115,
+    "leakage_check_passed": true
+  },
+  "tuning_split": {
+    "cutoff": "2000-11-23T03:13:55+00:00",
+    "train_rows": 719470,
+    "test_rows": 79942,
+    "train_period": [
+      "2000-04-25T23:05:32+00:00",
+      "2000-11-23T03:13:44+00:00"
+    ],
+    "test_period": [
+      "2000-11-23T03:13:57+00:00",
+      "2000-12-02T14:59:38+00:00"
+    ],
+    "train_users": 4971,
+    "test_users": 836,
+    "warm_test_users": 407,
+    "cold_start_test_users": 429,
+    "test_rows_from_warm_users": 22705,
+    "test_rows_on_unseen_items": 18,
+    "leakage_check_passed": true
+  },
+  "train_fingerprint": "0ed37ccdc5cfaab798c4c7ddd878809a",
+  "matrix": {
+    "users": 5400,
+    "items": 3883,
+    "nnz": 799412,
+    "density": 0.03812497019295886
+  },
+  "derived_rows": {
+    "user_activity_summary": 5400,
+    "item_popularity": 3883
+  }
+}

@@ -1,0 +1,14 @@
+landing_row,item_id,title,genres,error_reasons,validated_at
+3885,3432,Death Wish 3 (1985),Action|Drama,unique_item_id,2026-11-13T16:43:26+00:00
+3886,2984,On Any Sunday (1971),Documentary,unique_item_id,2026-11-13T16:43:26+00:00
+3887,2621,Xiu Xiu: The Sent-Down Girl (Tian yu) (1998),Drama|Romance,unique_item_id,2026-11-13T16:43:26+00:00
+3888,1237,"Seventh Seal, The (Sjunde inseglet, Det) (1957)",Drama,unique_item_id,2026-11-13T16:43:26+00:00
+3889,128,Jupiter's Wife (1994),Documentary,unique_item_id,2026-11-13T16:43:26+00:00
+3890,1283,High Noon (1952),Western,unique_item_id,2026-11-13T16:43:26+00:00
+3891,3740,Big Trouble in Little China (1986),Action|Comedy,unique_item_id,2026-11-13T16:43:26+00:00
+3892,618,Two Much (1996),Comedy|Romance,unique_item_id,2026-11-13T16:43:26+00:00
+3893,3311,"Man from Laramie, The (1955)",Western,unique_item_id,2026-11-13T16:43:26+00:00
+3894,866,Bound (1996),Crime|Drama|Romance|Thriller,unique_item_id,2026-11-13T16:43:26+00:00
+3895,,Knock Off (1998),Action,missing_value,2026-11-13T16:43:26+00:00
+3896,,"Walk in the Sun, A (1945)",Drama,missing_value,2026-11-13T16:43:26+00:00
+3897,,"Perfect Storm, The (2000)",Action|Adventure|Thriller,missing_value,2026-11-13T16:43:26+00:00

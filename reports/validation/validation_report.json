@@ -1,0 +1,415 @@
+{
+  "generated_at": "2026-11-13T16:43:28+00:00",
+  "source": "MovieLens 1M",
+  "archive_md5": "c4d9eecfca2ab87c1945afe126590906",
+  "dirty_feed_simulated": true,
+  "quality_gate": {
+    "passed": true,
+    "failures": [],
+    "max_error_rate": 0.05,
+    "min_rows": {
+      "users": 1000,
+      "items": 1000,
+      "interactions": 100000
+    }
+  },
+  "tables": {
+    "users": {
+      "total": 6070,
+      "valid": 6040,
+      "rejected": 30,
+      "warned": 145,
+      "rejected_share": 0.004942339373970346
+    },
+    "items": {
+      "total": 3896,
+      "valid": 3883,
+      "rejected": 13,
+      "warned": 78,
+      "rejected_share": 0.0033367556468172485
+    },
+    "interactions": {
+      "total": 1002409,
+      "valid": 999659,
+      "rejected": 2750,
+      "warned": 800,
+      "rejected_share": 0.0027433911706698563
+    }
+  },
+  "checks": [
+    {
+      "table": "interactions",
+      "check": "invalid_type",
+      "severity": "critical",
+      "description": "Value cannot be parsed into the expected type",
+      "rows_checked": 1002409,
+      "rows_failed": 200,
+      "pass_rate": 0.9998004806421331,
+      "detail": ""
+    },
+    {
+      "table": "interactions",
+      "check": "item_exists",
+      "severity": "critical",
+      "description": "Referential integrity: item_id must exist in the items table",
+      "rows_checked": 1002409,
+      "rows_failed": 150,
+      "pass_rate": 0.9998503604815998,
+      "detail": ""
+    },
+    {
+      "table": "interactions",
+      "check": "missing_value",
+      "severity": "critical",
+      "description": "Required field is empty",
+      "rows_checked": 1002409,
+      "rows_failed": 350,
+      "pass_rate": 0.9996508411237329,
+      "detail": ""
+    },
+    {
+      "table": "interactions",
+      "check": "no_exact_duplicates",
+      "severity": "critical",
+      "description": "Row is an exact copy of an earlier row",
+      "rows_checked": 1002409,
+      "rows_failed": 1500,
+      "pass_rate": 0.9985036048159983,
+      "detail": ""
+    },
+    {
+      "table": "interactions",
+      "check": "rating_valid_value",
+      "severity": "critical",
+      "description": "Rating must be a whole number from 1 to 5",
+      "rows_checked": 1002409,
+      "rows_failed": 200,
+      "pass_rate": 0.9998004806421331,
+      "detail": ""
+    },
+    {
+      "table": "interactions",
+      "check": "timestamp_in_window",
+      "severity": "critical",
+      "description": "Timestamp must fall between platform launch and ingestion time",
+      "rows_checked": 1002409,
+      "rows_failed": 200,
+      "pass_rate": 0.9998004806421331,
+      "detail": ""
+    },
+    {
+      "table": "interactions",
+      "check": "user_exists",
+      "severity": "critical",
+      "description": "Referential integrity: user_id must exist in the users table",
+      "rows_checked": 1002409,
+      "rows_failed": 150,
+      "pass_rate": 0.9998503604815998,
+      "detail": ""
+    },
+    {
+      "table": "interactions",
+      "check": "unique_user_item_pair",
+      "severity": "warning",
+      "description": "Same user rated the same movie more than once (latest kept in preparation)",
+      "rows_checked": 1002409,
+      "rows_failed": 800,
+      "pass_rate": 0.9992019225685324,
+      "detail": "800 rows in 400 pairs"
+    },
+    {
+      "table": "items",
+      "check": "invalid_type",
+      "severity": "critical",
+      "description": "Value cannot be parsed into the expected type",
+      "rows_checked": 3896,
+      "rows_failed": 0,
+      "pass_rate": 1.0,
+      "detail": ""
+    },
+    {
+      "table": "items",
+      "check": "missing_value",
+      "severity": "critical",
+      "description": "Required field is empty",
+      "rows_checked": 3896,
+      "rows_failed": 3,
+      "pass_rate": 0.9992299794661191,
+      "detail": ""
+    },
+    {
+      "table": "items",
+      "check": "unique_item_id",
+      "severity": "critical",
+      "description": "item_id appears more than once",
+      "rows_checked": 3896,
+      "rows_failed": 10,
+      "pass_rate": 0.9974332648870636,
+      "detail": ""
+    },
+    {
+      "table": "items",
+      "check": "genres_canonical",
+      "severity": "warning",
+      "description": "Genre list should use the canonical spelling and separator",
+      "rows_checked": 3896,
+      "rows_failed": 50,
+      "pass_rate": 0.9871663244353183,
+      "detail": ""
+    },
+    {
+      "table": "items",
+      "check": "genres_present",
+      "severity": "warning",
+      "description": "Genre list is empty",
+      "rows_checked": 3896,
+      "rows_failed": 20,
+      "pass_rate": 0.9948665297741273,
+      "detail": ""
+    },
+    {
+      "table": "items",
+      "check": "title_present",
+      "severity": "warning",
+      "description": "Title is empty",
+      "rows_checked": 3896,
+      "rows_failed": 8,
+      "pass_rate": 0.997946611909651,
+      "detail": ""
+    },
+    {
+      "table": "users",
+      "check": "invalid_type",
+      "severity": "critical",
+      "description": "Value cannot be parsed into the expected type",
+      "rows_checked": 6070,
+      "rows_failed": 0,
+      "pass_rate": 1.0,
+      "detail": ""
+    },
+    {
+      "table": "users",
+      "check": "missing_value",
+      "severity": "critical",
+      "description": "Required field is empty",
+      "rows_checked": 6070,
+      "rows_failed": 5,
+      "pass_rate": 0.999176276771005,
+      "detail": ""
+    },
+    {
+      "table": "users",
+      "check": "unique_user_id",
+      "severity": "critical",
+      "description": "user_id appears more than once",
+      "rows_checked": 6070,
+      "rows_failed": 25,
+      "pass_rate": 0.9958813838550247,
+      "detail": ""
+    },
+    {
+      "table": "users",
+      "check": "age_code_valid",
+      "severity": "warning",
+      "description": "Age must be one of the MovieLens age codes",
+      "rows_checked": 6070,
+      "rows_failed": 15,
+      "pass_rate": 0.9975288303130149,
+      "detail": ""
+    },
+    {
+      "table": "users",
+      "check": "gender_valid",
+      "severity": "warning",
+      "description": "Gender should be exactly M or F",
+      "rows_checked": 6070,
+      "rows_failed": 100,
+      "pass_rate": 0.9835255354200988,
+      "detail": ""
+    },
+    {
+      "table": "users",
+      "check": "occupation_valid",
+      "severity": "warning",
+      "description": "Occupation code must be between 0 and 20",
+      "rows_checked": 6070,
+      "rows_failed": 0,
+      "pass_rate": 1.0,
+      "detail": ""
+    },
+    {
+      "table": "users",
+      "check": "zip_present",
+      "severity": "warning",
+      "description": "Zip code is empty",
+      "rows_checked": 6070,
+      "rows_failed": 30,
+      "pass_rate": 0.9950576606260296,
+      "detail": ""
+    }
+  ],
+  "injected_vs_caught": [
+    {
+      "table": "interactions",
+      "defect_types": "non_numeric_rating, unparseable_timestamp",
+      "check": "invalid_type",
+      "defects_injected": 200,
+      "caught": 200,
+      "match": "yes"
+    },
+    {
+      "table": "interactions",
+      "defect_types": "orphan_item",
+      "check": "item_exists",
+      "defects_injected": 150,
+      "caught": 150,
+      "match": "yes"
+    },
+    {
+      "table": "interactions",
+      "defect_types": "missing_key, missing_rating",
+      "check": "missing_value",
+      "defects_injected": 350,
+      "caught": 350,
+      "match": "yes"
+    },
+    {
+      "table": "interactions",
+      "defect_types": "exact_duplicate",
+      "check": "no_exact_duplicates",
+      "defects_injected": 1500,
+      "caught": 1500,
+      "match": "yes"
+    },
+    {
+      "table": "interactions",
+      "defect_types": "out_of_range_rating",
+      "check": "rating_valid_value",
+      "defects_injected": 200,
+      "caught": 200,
+      "match": "yes"
+    },
+    {
+      "table": "interactions",
+      "defect_types": "future_timestamp, prehistoric_timestamp",
+      "check": "timestamp_in_window",
+      "defects_injected": 200,
+      "caught": 200,
+      "match": "yes"
+    },
+    {
+      "table": "interactions",
+      "defect_types": "rerated_pair",
+      "check": "unique_user_item_pair",
+      "defects_injected": 400,
+      "caught": 400,
+      "match": "yes"
+    },
+    {
+      "table": "interactions",
+      "defect_types": "orphan_user",
+      "check": "user_exists",
+      "defects_injected": 150,
+      "caught": 150,
+      "match": "yes"
+    },
+    {
+      "table": "items",
+      "defect_types": "messy_genres",
+      "check": "genres_canonical",
+      "defects_injected": 50,
+      "caught": 50,
+      "match": "yes"
+    },
+    {
+      "table": "items",
+      "defect_types": "missing_genres",
+      "check": "genres_present",
+      "defects_injected": 20,
+      "caught": 20,
+      "match": "yes"
+    },
+    {
+      "table": "items",
+      "defect_types": "missing_item_id",
+      "check": "missing_value",
+      "defects_injected": 3,
+      "caught": 3,
+      "match": "yes"
+    },
+    {
+      "table": "items",
+      "defect_types": "missing_title",
+      "check": "title_present",
+      "defects_injected": 8,
+      "caught": 8,
+      "match": "yes"
+    },
+    {
+      "table": "items",
+      "defect_types": "exact_duplicate",
+      "check": "unique_item_id",
+      "defects_injected": 10,
+      "caught": 10,
+      "match": "yes"
+    },
+    {
+      "table": "users",
+      "defect_types": "invalid_age",
+      "check": "age_code_valid",
+      "defects_injected": 15,
+      "caught": 15,
+      "match": "yes"
+    },
+    {
+      "table": "users",
+      "defect_types": "messy_gender, missing_gender",
+      "check": "gender_valid",
+      "defects_injected": 100,
+      "caught": 100,
+      "match": "yes"
+    },
+    {
+      "table": "users",
+      "defect_types": "missing_user_id",
+      "check": "missing_value",
+      "defects_injected": 5,
+      "caught": 5,
+      "match": "yes"
+    },
+    {
+      "table": "users",
+      "defect_types": "exact_duplicate",
+      "check": "unique_user_id",
+      "defects_injected": 25,
+      "caught": 25,
+      "match": "yes"
+    },
+    {
+      "table": "users",
+      "defect_types": "missing_zip",
+      "check": "zip_present",
+      "defects_injected": 30,
+      "caught": 30,
+      "match": "yes"
+    }
+  ],
+  "profile_after_validation": {
+    "interactions": 999659,
+    "distinct_users": 6040,
+    "distinct_items": 3706,
+    "matrix_density": 0.044659054763530055,
+    "rating_distribution": {
+      "1": 56243,
+      "2": 107552,
+      "3": 261010,
+      "4": 348700,
+      "5": 226154
+    },
+    "mean_rating": 3.581168178348817,
+    "first_event": "2000-04-25T23:05:32+00:00",
+    "last_event": "2003-02-28T17:49:50+00:00",
+    "ratings_per_user_median": 96.0,
+    "ratings_per_item_median": 123.5
+  }
+}

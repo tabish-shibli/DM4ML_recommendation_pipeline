@@ -1,0 +1,30 @@
+feature,feature_view,entity,dtype,description,logic,source,storage,null_pct,min,mean,max,top_value
+user_gender,user_profile,user,string,"Self-reported gender (M, F, or U when missing)",standardised from users.gender,users,user_features,0.0,,,,M (71%)
+user_age_group,user_profile,user,string,Age bracket label from the MovieLens age code,"map age code to label, ""unknown"" when invalid",users,user_features,0.0,,,,25-34 (35%)
+user_occupation,user_profile,user,string,Occupation name,map occupation code to name,users,user_features,0.0,,,,college/grad student (13%)
+user_activity_count,user_profile,user,int,Number of ratings the user gave in the training window,count(*) per user,interactions,user_features,0.0,2.0,148.03925925925927,1848.0,
+user_avg_rating,user_profile,user,float,Mean rating given by the user,mean(rating) per user,interactions,user_features,0.0,1.0153846153846153,3.705065741718804,5.0,
+user_rating_std,user_profile,user,float,Spread of the user's ratings (0 for a single rating),"std(rating) per user, filled with 0",interactions,user_features,0.0,0.0,1.0106599473780993,2.1213203435596424,
+user_positive_share,user_profile,user,float,Share of the user's ratings that are 4 or 5,mean(rating >= 4) per user,interactions,user_features,0.0,0.0,0.6237583212484005,1.0,
+user_days_since_last,user_profile,user,float,Days between the user's last rating and the reference time,(reference_time - max(event_time)) in days,interactions,user_features,0.0,0.0,74.58256641803841,220.56469907407407,
+user_tenure_days,user_profile,user,float,Days between the user's first and last rating,(max(event_time) - min(event_time)) in days,interactions,user_features,0.0,0.0,10.651902527006172,214.0079513888889,
+user_preferred_genre,user_profile,user,string,Genre the user rated most often (ties broken by mean rating),argmax of genre counts over the user's rated movies,interactions + items,user_features,0.0,,,,Drama (37%)
+user_genre_entropy,user_profile,user,float,"How spread the user's taste is across genres, 0 (one genre) to 1 (even)",normalised Shannon entropy of the user's genre distribution,interactions + items,user_features,0.0,0.3287710435992202,0.7810548644161265,0.9358252889340843,
+user_mainstreamness,user_profile,user,float,Mean popularity percentile of the movies the user rated,mean(item_popularity_pct) over the user's rated movies,interactions + item_profile,user_features,0.0,0.4769710098821913,0.851258699379598,0.9884324834749764,
+affinity_<genre> (18 columns),user_genre_affinity,user,float,"Share of the user's ratings that fall in each of the 18 genres (one column per genre, rows sum to 1)",genre counts / total genre tags per user,interactions + items,user_genre_affinity,0.0,0.0,0.05555555555555555,0.64,
+item_popularity,item_profile,item,int,Number of ratings the movie received in the training window,count(*) per item,interactions,item_features,0.0,0.0,205.87483904197785,2900.0,
+item_popularity_pct,item_profile,item,float,Popularity percentile within the catalogue (0 to 1),"rank(item_popularity, pct=True)",interactions,item_features,0.0,0.028586144733453514,0.5001287664177183,1.0,
+item_avg_rating,item_profile,item,float,Raw mean rating,mean(rating) per item,interactions,item_features,5.6914756631470516,1.0,3.2380881901830154,5.0,
+item_bayesian_rating,item_profile,item,float,"Mean rating shrunk towards the global mean, so movies with few ratings are not over-trusted","(sum(rating) + m * global_mean) / (count + m), m = bayesian_prior_weight",interactions,item_features,0.0,1.7734099885996855,3.4081513268124284,4.549010025320839,
+item_rating_std,item_profile,item,float,Spread of the movie's ratings,"std(rating) per item, filled with 0",interactions,item_features,0.0,0.0,0.9272077085512292,2.8284271247461903,
+item_days_since_last,item_profile,item,float,Days between the movie's last rating and the reference time,(reference_time - max(event_time)) in days,interactions,item_features,5.6914756631470516,0.0,5.78194754814208,219.46689814814815,
+item_trending_count,item_profile,item,int,Ratings received in the last N days before the reference time,count(*) where event_time > reference_time - trending_window_days,interactions,item_features,0.0,0.0,76.19417975791913,1196.0,
+item_release_year,item_profile,item,int,Release year parsed from the title,"regex on the ""(YYYY)"" suffix of the title",items,item_features,0.0,1919.0,1986.107391192377,2000.0,
+item_age_years,item_profile,item,int,Years between release and the reference time,reference_year - item_release_year,items,item_features,0.0,0.0,13.892608807622972,81.0,
+item_n_genres,item_profile,item,int,Number of genres the movie is tagged with,len(genres),items,item_features,0.0,0.0,1.6433170229204224,6.0,
+genre_<genre> (18 columns),item_genres,item,int,"Multi-hot genre flags, one column per genre",1 if the movie carries the genre else 0,items,item_genres,0.0,0.0,0.0912953901622457,1.0,
+ix_days_before_reference,interaction_context,user_item,float,"Age of the rating at the reference time, in days",(reference_time - event_time) in days,interactions,interaction_features,0.0,0.0,85.35465731412704,220.66256944444444,
+ix_recency_weight,interaction_context,user_item,float,Exponential time-decay weight with a configurable half-life,0.5 ** (ix_days_before_reference / recency_half_life_days),interactions,interaction_features,0.0,0.18278171671213883,0.5874695163088416,1.0,
+ix_rating_centered,interaction_context,user_item,float,"Rating minus the user's own mean, removes personal rating scale",rating - user_avg_rating,interactions + user_profile,interaction_features,0.0,-3.8909090909090907,5.688522950449382e-19,3.6956521739130435,
+ix_is_positive,interaction_context,user_item,int,1 if the rating is at or above the positive threshold,rating >= positive_rating_threshold,interactions,interaction_features,0.0,0.0,0.5785952675216284,1.0,
+ui_genre_match,on_demand,user_item,float,How well a candidate movie's genres match the user's genre affinity,"dot(affinity_vector, genre_vector) / item_n_genres",user_genre_affinity + item_genres,computed at request time,,,,,computed per request

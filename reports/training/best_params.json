@@ -1,0 +1,8 @@
+{
+  "mf_reg": 0.1,
+  "mf_val_rmse": 0.883050042075034,
+  "hybrid_mf_weight": 1.0,
+  "hybrid_popularity_weight": 3.0,
+  "hybrid_genre_weight": 0.25,
+  "hybrid_val_ndcg_at_10": 0.19122003005418392
+}

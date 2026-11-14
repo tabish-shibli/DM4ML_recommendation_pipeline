@@ -1,0 +1,146 @@
+landing_row,user_id,gender,age,occupation,zip_code,warning_reasons
+11,10,Female ,35,1,95370,gender_valid
+19,18,F,18,3,,zip_present
+94,93,,25,17,95825,gender_valid
+180,179,MALE,25,0,02135,gender_valid
+186,185, F,45,0,14468,gender_valid
+230,229,,18,10,04576,gender_valid
+285,284,M,0,12,91910,age_code_valid
+300,299,male,25,12,97370,gender_valid
+304,303,M,25,7,,zip_present
+309,308,M,25,2,,zip_present
+346,345,,25,12,94114,gender_valid
+433,432,male,45,16,55306,gender_valid
+439,438,M,0,11,53705,age_code_valid
+483,482,MALE,25,14,55305,gender_valid
+490,489,male,18,4,55455,gender_valid
+529,528,MALE,18,17,83843,gender_valid
+598,597,female,35,12,80206,gender_valid
+666,665,M,18,2,,zip_present
+745,744,,25,17,77007,gender_valid
+783,782,female,56,1,28223,gender_valid
+847,846,M,25,5,,zip_present
+869,868,,50,17,01702-7224,gender_valid
+1124,1123,M,50,0,,zip_present
+1201,1200,,1,0,97222,gender_valid
+1283,1282,M,50,1,,zip_present
+1303,1302,M,18,4,,zip_present
+1321,1320,male,25,4,22030,gender_valid
+1350,1349,Female ,50,7,13088,gender_valid
+1369,1368,,25,3,50266,gender_valid
+1392,1391,m,35,15,20723,gender_valid
+1398,1397,,35,7,55901,gender_valid
+1480,1479,m,50,2,94501,gender_valid
+1638,1637,M,56,0,,zip_present
+1714,1713,Female ,25,0,47421,gender_valid
+1745,1744,M,35,12,,zip_present
+1747,1746,male,25,4,33157,gender_valid
+1842,1841,M,18,0,,zip_present
+1864,1863,,18,4,90048,gender_valid
+1888,1887,m,56,15,92119,gender_valid
+1994,1993,female,35,17,99508,gender_valid
+2075,2074,male,18,4,48197,gender_valid
+2090,2089,M,35,17,,zip_present
+2144,2143,m,18,4,32607,gender_valid
+2156,2155, F,1,10,50246,gender_valid
+2161,2160,,18,19,46556,gender_valid
+2169,2168,,1,10,60202,gender_valid
+2261,2260, F,25,20,46835,gender_valid
+2292,2291,female,45,1,13214,gender_valid
+2320,2319,Female ,35,7,48104,gender_valid
+2392,2391,female,50,18,13126,gender_valid
+2421,2420,,50,7,37938,gender_valid
+2440,2439,,45,17,48105,gender_valid
+2506,2505,,25,7,55405,gender_valid
+2565,2564,male,35,20,43230,gender_valid
+2658,2657,m,1,10,47403,gender_valid
+2708,2707,M,56,13,,zip_present
+2893,2892,,25,4,84064,gender_valid
+2942,2941,,35,12,98033,gender_valid
+2980,2979,MALE,35,2,45243,gender_valid
+2994,2993,m,18,19,12133,gender_valid
+3006,3005,M,25,17,,zip_present
+3061,3060,female,35,1,92705,gender_valid
+3068,3067,F,25,0,,zip_present
+3074,3073,M,25,0,,zip_present
+3122,3121,male,25,2,32118,gender_valid
+3127,3126,male,25,2,32118,gender_valid
+3244,3243, F,25,12,98117,gender_valid
+3271,3270,M,99,11,45220,age_code_valid
+3273,3272,M,99,0,08330,age_code_valid
+3280,3279,m,45,15,92880,gender_valid
+3284,3283,MALE,35,16,66208,gender_valid
+3300,3299,Female ,25,4,19119,gender_valid
+3366,3365,M,50,17,,zip_present
+3391,3390, F,45,20,02476,gender_valid
+3434,3433,,18,12,55113,gender_valid
+3498,3497,Female ,35,2,94109,gender_valid
+3536,3535,M,45,18,,zip_present
+3550,3549,F,-1,7,60137,age_code_valid
+3558,3557,female,18,5,48185,gender_valid
+3586,3585,Female ,35,20,60640,gender_valid
+3587,3586,M,35,20,,zip_present
+3663,3662,M,35,16,,zip_present
+3738,3737,,25,14,37127,gender_valid
+3770,3769,female,25,15,02446,gender_valid
+3772,3771,M,200,1,14982,age_code_valid
+3810,3809, F,35,6,20650,gender_valid
+3906,3905,,25,17,361069,gender_valid
+3909,3908,,25,0,10021,gender_valid
+3929,3928,male,25,0,55812,gender_valid
+3934,3933,,35,6,48073,gender_valid
+3948,3947,,25,0,90019,gender_valid
+3956,3955,,35,0,12831,gender_valid
+3982,3981,Female ,45,0,97701,gender_valid
+4056,4055,MALE,50,0,98826,gender_valid
+4068,4067,female,45,20,91607,gender_valid
+4073,4072,M,0,6,93111,age_code_valid
+4075,4074,MALE,35,6,78746,gender_valid
+4095,4094, F,25,17,49017,gender_valid
+4100,4099,male,35,17,94954,gender_valid
+4110,4109,M,99,3,97202,age_code_valid
+4191,4190,MALE,45,17,89108,gender_valid
+4226,4225,,25,3,48197,gender_valid
+4239,4238,MALE,35,16,44691,gender_valid
+4243,4242,,50,7,78704,gender_valid
+4248,4247,,25,4,82601,gender_valid
+4285,4284,Female ,50,7,40601,gender_valid
+4306,4305,F,45,17,,zip_present
+4421,4420,,25,15,92557,gender_valid
+4428,4427,,18,0,51104,gender_valid
+4496,4495,M,18,4,,zip_present
+4546,4545,,25,16,47274,gender_valid
+4547,4546,M,25,7,,zip_present
+4669,4668,,35,14,74012,gender_valid
+4680,4679,M,56,13,,zip_present
+4878,4877,M,99,4,94703,age_code_valid
+4926,4925,F,99,6,55401,age_code_valid
+4960,4959,,25,17,23454,gender_valid
+4975,4974,female,35,20,94131,gender_valid
+5006,5005,M,45,16,,zip_present
+5016,5015,female,35,6,92672,gender_valid
+5026,5025,,25,20,60615,gender_valid
+5031,5030,M,-1,1,70006,age_code_valid
+5127,5126,M,0,11,02453,age_code_valid
+5129,5128, F,50,7,94709,gender_valid
+5142,5141,,18,17,55423,gender_valid
+5250,5249,,45,14,75006,gender_valid
+5307,5306,F,25,17,,zip_present
+5315,5314,,25,0,94107,gender_valid
+5345,5344, F,50,1,98177,gender_valid
+5418,5417,M,18,17,,zip_present
+5424,5423,F,50,5,,zip_present
+5425,5424,male,35,2,80012,gender_valid
+5430,5429,Female ,25,1,02460,gender_valid
+5476,5475,M,0,4,94110,age_code_valid
+5485,5484,M,0,17,21742,age_code_valid
+5511,5510,,18,4,191004,gender_valid
+5533,5532,,25,17,27408,gender_valid
+5614,5613,F,99,0,98622,age_code_valid
+5667,5666,,18,16,11209,gender_valid
+5730,5729, F,18,10,99016,gender_valid
+5741,5740,M,25,1,,zip_present
+5764,5763, F,25,1,08904,gender_valid
+5782,5781,M,25,2,,zip_present
+5788,5787,,25,20,90802,gender_valid
+5960,5959,,18,4,14850,gender_valid

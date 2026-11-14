@@ -1,0 +1,79 @@
+landing_row,item_id,title,genres,warning_reasons
+65,64,Two if by Sea (1996),comedy|romance,genres_canonical
+78,77,Nico Icon (1995),documentary,genres_canonical
+83,82,Antonia's Line (Antonia) (1995),drama,genres_canonical
+90,89,Nick of Time (1995),ACTION|THRILLER|,genres_canonical
+105,105,"Bridges of Madison County, The (1995)",Drama | Romance,genres_canonical
+146,146,"Amazing Panda Adventure, The (1995)",ADVENTURE|CHILDREN'S|,genres_canonical
+428,430,Calendar Girl (1993),drama,genres_canonical
+453,455,Free Willy (1993),Adventure | Children's | Drama,genres_canonical
+467,469,"House of the Spirits, The (1993)",,genres_present
+478,480,Jurassic Park (1993),Action | Adventure | Sci-Fi,genres_canonical
+543,545,,Drama,title_present
+551,553,Tombstone (1993),,genres_present
+577,579,"Scorta, La (1993)",,genres_present
+639,642,Roula (1995),,genres_present
+663,667,Bloodsport 2 (1995),action,genres_canonical
+676,681,Clean Slate (Coup de Torchon) (1981),crime,genres_canonical
+717,724,"Craft, The (1996)",drama|horror,genres_canonical
+739,747,"Stupids, The (1996)",comedy,genres_canonical
+753,761,"Phantom, The (1996)",,genres_present
+910,920,Gone with the Wind (1939),Drama | Romance | War,genres_canonical
+940,950,"Thin Man, The (1934)",mystery,genres_canonical
+965,975,Something to Sing About (1937),comedy|musical,genres_canonical
+1026,1037,"Lawnmower Man, The (1992)",ACTION|SCI-FI|THRILLER|,genres_canonical
+1032,1043,To Gillian on Her 37th Birthday (1996),drama|romance,genres_canonical
+1066,1080,Monty Python's Life of Brian (1979),,genres_present
+1100,1114,"Funeral, The (1996)",,genres_present
+1145,1159,Love in Bloom (1935),ROMANCE|,genres_canonical
+1148,1162,"Ruling Class, The (1972)",,genres_present
+1272,1290,Some Kind of Wonderful (1987),drama|romance,genres_canonical
+1398,1420,Message to Love: The Isle of Wight Festival (1996),DOCUMENTARY|,genres_canonical
+1498,1533,"Promise, The (La Promesse) (1996)",drama,genres_canonical
+1549,1588,George of the Jungle (1997),,genres_present
+1736,1794,Love and Death on Long Island (1997),Comedy | Drama,genres_canonical
+1816,1883,Bulworth (1998),comedy,genres_canonical
+1913,1980,Friday the 13th Part VII: The New Blood (1988),horror,genres_canonical
+1925,1992,Child's Play 2 (1990),horror,genres_canonical
+2053,2120,Needful Things (1993),Drama | Horror,genres_canonical
+2068,2135,,Adventure|Musical,title_present
+2078,2145,Pretty in Pink (1986),comedy|drama|romance,genres_canonical
+2095,2162,"NeverEnding Story II: The Next Chapter, The (1990)",ADVENTURE|CHILDREN'S|FANTASY|,genres_canonical
+2132,2199,Phoenix (1998),crime|drama,genres_canonical
+2140,2207,Jamaica Inn (1939),,genres_present
+2172,2239,Swept Away (Travolti da un insolito destino nell'azzurro mare d'Agosto) (1975),comedy|drama,genres_canonical
+2181,2248,Say Anything... (1989),COMEDY|DRAMA|ROMANCE|,genres_canonical
+2266,2333,Gods and Monsters (1998),drama,genres_canonical
+2428,2495,"Fantastic Planet, The (La Planète sauvage) (1973)",animation|sci-fi,genres_canonical
+2437,2504,200 Cigarettes (1999),Comedy | Drama,genres_canonical
+2454,2521,Airport 1975 (1974),DRAMA|,genres_canonical
+2459,2526,Meteor (1979),,genres_present
+2463,2530,Beneath the Planet of the Apes (1970),ACTION|SCI-FI|,genres_canonical
+2464,2531,,Action|Sci-Fi,title_present
+2583,2650,"Ghost of Frankenstein, The (1942)",HORROR|,genres_canonical
+2602,2669,Pork Chop Hill (1959),WAR|,genres_canonical
+2622,2689,Get Bruce (1999),documentary,genres_canonical
+2627,2694,Big Daddy (1999),,genres_present
+2637,2704,"Lovers on the Bridge, The (Les Amants du Pont-Neuf) (1991)",drama|romance,genres_canonical
+2750,2817,Aces: Iron Eagle III (1992),ACTION|WAR|,genres_canonical
+2916,2983,"Ipcress File, The (1965)",thriller,genres_canonical
+2919,2986,Robocop 2 (1990),ACTION|CRIME|SCI-FI|,genres_canonical
+2952,3019,Drugstore Cowboy (1989),Crime | Drama,genres_canonical
+2954,3021,"Funhouse, The (1981)",horror,genres_canonical
+3026,3093,McCabe & Mrs. Miller (1971),Drama | Western,genres_canonical
+3048,3115,,Drama,title_present
+3072,3139,,Action|Adventure,title_present
+3138,3205,Black Sunday (La Maschera Del Demonio) (1960),,genres_present
+3200,3267,"Mariachi, El (1992)",,genres_present
+3316,3383,Big Fella (1937),,genres_present
+3336,3403,Raise the Titanic (1980),DRAMA|THRILLER|,genres_canonical
+3357,3424,Do the Right Thing (1989),,genres_present
+3382,3449,,Drama,title_present
+3575,3642,,Western,title_present
+3667,3734,Prince of the City (1981),drama,genres_canonical
+3675,3742,"Battleship Potemkin, The (Bronenosets Potyomkin) (1925)",,genres_present
+3702,3769,Thunderbolt and Lightfoot (1974),,genres_present
+3712,3779,Project Moon Base (1953),,genres_present
+3716,3783,Croupier (1998),CRIME|DRAMA|,genres_canonical
+3726,3793,X-Men (2000),,genres_present
+3823,3891,,Crime|Drama,title_present

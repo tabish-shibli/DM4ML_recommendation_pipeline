@@ -1,0 +1,20 @@
+# Tested with Python 3.12 on Windows 11. Versions pinned to what the reported results were produced with.
+
+# data handling
+pandas==3.1.1
+numpy==2.5.4
+scipy==1.18.1
+pyarrow==26.0.1
+PyYAML==6.0.3
+requests==2.34.2
+
+# validation
+pandera==0.36.0
+
+# experiment tracking and orchestration
+mlflow==3.18.0
+prefect==3.9.2
+
+# reports and tests
+matplotlib==3.11.2
+pytest==9.2.0

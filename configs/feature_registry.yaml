@@ -1,0 +1,195 @@
+# Feature registry. This file is the single definition of every feature the
+# models are allowed to use. The feature builder checks its output against it,
+# and reports/feature_catalog.md is generated from it.
+#
+# Features are computed "as of" a reference time (the end of the training
+# window), using only interactions on or before that time.
+
+version: 1
+
+entities:
+  user:
+    key: user_id
+    description: A registered MovieLens user
+  item:
+    key: item_id
+    description: A movie in the catalogue
+  user_item:
+    key: [user_id, item_id]
+    description: A (user, movie) pair, either an observed rating or a candidate
+
+feature_views:
+  user_profile:
+    entity: user
+    storage: user_features
+    features:
+      - name: user_gender
+        dtype: string
+        description: Self-reported gender (M, F, or U when missing)
+        source: users
+        logic: standardised from users.gender
+      - name: user_age_group
+        dtype: string
+        description: Age bracket label from the MovieLens age code
+        source: users
+        logic: map age code to label, "unknown" when invalid
+      - name: user_occupation
+        dtype: string
+        description: Occupation name
+        source: users
+        logic: map occupation code to name
+      - name: user_activity_count
+        dtype: int
+        description: Number of ratings the user gave in the training window
+        source: interactions
+        logic: count(*) per user
+      - name: user_avg_rating
+        dtype: float
+        description: Mean rating given by the user
+        source: interactions
+        logic: mean(rating) per user
+      - name: user_rating_std
+        dtype: float
+        description: Spread of the user's ratings (0 for a single rating)
+        source: interactions
+        logic: std(rating) per user, filled with 0
+      - name: user_positive_share
+        dtype: float
+        description: Share of the user's ratings that are 4 or 5
+        source: interactions
+        logic: mean(rating >= 4) per user
+      - name: user_days_since_last
+        dtype: float
+        description: Days between the user's last rating and the reference time
+        source: interactions
+        logic: (reference_time - max(event_time)) in days
+      - name: user_tenure_days
+        dtype: float
+        description: Days between the user's first and last rating
+        source: interactions
+        logic: (max(event_time) - min(event_time)) in days
+      - name: user_preferred_genre
+        dtype: string
+        description: Genre the user rated most often (ties broken by mean rating)
+        source: interactions + items
+        logic: argmax of genre counts over the user's rated movies
+      - name: user_genre_entropy
+        dtype: float
+        description: How spread the user's taste is across genres, 0 (one genre) to 1 (even)
+        source: interactions + items
+        logic: normalised Shannon entropy of the user's genre distribution
+      - name: user_mainstreamness
+        dtype: float
+        description: Mean popularity percentile of the movies the user rated
+        source: interactions + item_profile
+        logic: mean(item_popularity_pct) over the user's rated movies
+
+  user_genre_affinity:
+    entity: user
+    storage: user_genre_affinity
+    features:
+      - name: "affinity_<genre>"
+        dtype: float
+        description: Share of the user's ratings that fall in each of the 18 genres (one column per genre, rows sum to 1)
+        source: interactions + items
+        logic: genre counts / total genre tags per user
+
+  item_profile:
+    entity: item
+    storage: item_features
+    features:
+      - name: item_popularity
+        dtype: int
+        description: Number of ratings the movie received in the training window
+        source: interactions
+        logic: count(*) per item
+      - name: item_popularity_pct
+        dtype: float
+        description: Popularity percentile within the catalogue (0 to 1)
+        source: interactions
+        logic: rank(item_popularity, pct=True)
+      - name: item_avg_rating
+        dtype: float
+        description: Raw mean rating
+        source: interactions
+        logic: mean(rating) per item
+      - name: item_bayesian_rating
+        dtype: float
+        description: Mean rating shrunk towards the global mean, so movies with few ratings are not over-trusted
+        source: interactions
+        logic: (sum(rating) + m * global_mean) / (count + m), m = bayesian_prior_weight
+      - name: item_rating_std
+        dtype: float
+        description: Spread of the movie's ratings
+        source: interactions
+        logic: std(rating) per item, filled with 0
+      - name: item_days_since_last
+        dtype: float
+        description: Days between the movie's last rating and the reference time
+        source: interactions
+        logic: (reference_time - max(event_time)) in days
+      - name: item_trending_count
+        dtype: int
+        description: Ratings received in the last N days before the reference time
+        source: interactions
+        logic: count(*) where event_time > reference_time - trending_window_days
+      - name: item_release_year
+        dtype: int
+        description: Release year parsed from the title
+        source: items
+        logic: regex on the "(YYYY)" suffix of the title
+      - name: item_age_years
+        dtype: int
+        description: Years between release and the reference time
+        source: items
+        logic: reference_year - item_release_year
+      - name: item_n_genres
+        dtype: int
+        description: Number of genres the movie is tagged with
+        source: items
+        logic: len(genres)
+
+  item_genres:
+    entity: item
+    storage: item_genres
+    features:
+      - name: "genre_<genre>"
+        dtype: int
+        description: Multi-hot genre flags, one column per genre
+        source: items
+        logic: 1 if the movie carries the genre else 0
+
+  interaction_context:
+    entity: user_item
+    storage: interaction_features
+    features:
+      - name: ix_days_before_reference
+        dtype: float
+        description: Age of the rating at the reference time, in days
+        source: interactions
+        logic: (reference_time - event_time) in days
+      - name: ix_recency_weight
+        dtype: float
+        description: Exponential time-decay weight with a configurable half-life
+        source: interactions
+        logic: 0.5 ** (ix_days_before_reference / recency_half_life_days)
+      - name: ix_rating_centered
+        dtype: float
+        description: Rating minus the user's own mean, removes personal rating scale
+        source: interactions + user_profile
+        logic: rating - user_avg_rating
+      - name: ix_is_positive
+        dtype: int
+        description: 1 if the rating is at or above the positive threshold
+        source: interactions
+        logic: rating >= positive_rating_threshold
+
+  on_demand:
+    entity: user_item
+    storage: computed at request time
+    features:
+      - name: ui_genre_match
+        dtype: float
+        description: How well a candidate movie's genres match the user's genre affinity
+        source: user_genre_affinity + item_genres
+        logic: dot(affinity_vector, genre_vector) / item_n_genres

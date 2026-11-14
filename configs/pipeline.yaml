@@ -1,0 +1,108 @@
+# Pipeline configuration. Every stage reads its settings from here, so a run
+# is fully described by this file plus the code version.
+
+project:
+  name: movielens-recsys-pipeline
+  seed: 42
+
+paths:
+  raw: data/raw
+  validated: data/validated
+  processed: data/processed
+  features: data/features
+  errors: data/errors
+  models: models
+  reports: reports
+  logs: logs
+
+ingestion:
+  source_name: MovieLens 1M
+  source_url: https://files.grouplens.org/datasets/movielens/ml-1m.zip
+  md5: c4d9eecfca2ab87c1945afe126590906
+  archive_dir: ml-1m
+  # MovieLens is already clean, so the landing files would never exercise the
+  # validation stage. When this flag is on, ingestion adds a small, seeded set
+  # of realistic defects to the landing CSVs (the original archive is never
+  # modified) and writes a ground-truth log of exactly what was added.
+  simulate_dirty_feed: true
+  dirty_feed:
+    seed: 7
+    interactions:
+      exact_duplicates: 1500
+      rerated_pairs: 400
+      missing_keys: 200
+      missing_rating: 150
+      non_numeric_rating: 100
+      out_of_range_rating: 200
+      unparseable_timestamp: 100
+      future_timestamp: 100
+      prehistoric_timestamp: 100
+      orphan_user: 150
+      orphan_item: 150
+    users:
+      exact_duplicates: 25
+      missing_user_id: 5
+      missing_gender: 40
+      messy_gender: 60
+      invalid_age: 15
+      missing_zip: 30
+    items:
+      exact_duplicates: 10
+      missing_item_id: 3
+      missing_title: 8
+      messy_genres: 50
+      missing_genres: 20
+
+validation:
+  rating_min: 1
+  rating_max: 5
+  # MovieLens 1M was collected from April 2000 onwards. Anything earlier than
+  # the platform launch, or later than the moment of ingestion, is invalid.
+  platform_launch: "2000-01-01"
+  allowed_age_codes: [1, 18, 25, 35, 45, 50, 56]
+  occupation_range: [0, 20]
+  # Quality gate: the run stops if more than this share of a table is rejected.
+  max_error_rate: 0.05
+  min_rows:
+    users: 1000
+    items: 1000
+    interactions: 100000
+
+split:
+  # Global time-based split: everything after the cutoff is the test period.
+  test_fraction: 0.2
+  # The tail of the training window is held out once more for tuning, so test
+  # data is never used to pick hyperparameters.
+  validation_fraction: 0.1
+
+features:
+  bayesian_prior_weight: 20
+  trending_window_days: 30
+  recency_half_life_days: 90
+  positive_rating_threshold: 4
+
+training:
+  popularity:
+    min_interactions: 1
+  matrix_factorization:
+    factors: 32
+    reg: 0.1
+    iterations: 10
+  tuning:
+    reg_grid: [0.05, 0.1, 0.2]
+    hybrid_grid:
+      mf_weight: [1.0]
+      popularity_weight: [0.5, 1.0, 2.0, 3.0, 4.0, 6.0, 8.0]
+      genre_weight: [0.0, 0.25, 0.5]
+    selection_metric: ndcg_at_10
+
+evaluation:
+  k_values: [5, 10]
+  primary_k: 10
+  relevance_threshold: 4
+  bootstrap_samples: 1000
+
+mlflow:
+  tracking_uri: sqlite:///mlflow.db
+  artifact_location: mlartifacts
+  experiment_name: dm4ml-movielens-recsys
